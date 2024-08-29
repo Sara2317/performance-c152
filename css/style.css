@@ -1,3 +1,42 @@
-h3{
+nav {
+   /* background-color:#1a8cff */
+   font-weight: 600;
+}
+
+h3 {
    text-align: center;
+}
+
+body {
+   font-family: Helvetica, sans-serif;
+}
+
+.btn-out-light {
+   /* background-color: #3333ff; */
+   --bs-btn-color: #1a8cff;
+   --bs-btn-border-color: #1a8cff;
+   --bs-btn-hover-color: #fff;
+   --bs-btn-hover-bg: #1a8cff;
+   --bs-btn-hover-border-color: #1a8cff;
+   --bs-btn-focus-shadow-rgb: 13, 110, 253;
+   --bs-btn-active-color: #fff;
+   --bs-btn-active-bg: #1a8cff;
+   --bs-btn-active-border-color: #1a8cff;
+   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+   --bs-gradient: none;
+}
+
+.btn-out-dark {
+   /* background-color: #3333ff; */
+   --bs-btn-color: #3333ff;
+   --bs-btn-border-color: #3333ff;
+   --bs-btn-hover-color: #000000;
+   --bs-btn-hover-bg: #3333ff;
+   --bs-btn-hover-border-color: #3333ff;
+   --bs-btn-focus-shadow-rgb: 13, 110, 253;
+   --bs-btn-active-color: #000000;
+   --bs-btn-active-bg: #3333ff;
+   --bs-btn-active-border-color: #3333ff;
+   --bs-btn-active-shadow: inset 0 3px 5px rgba(255, 255, 255, 0.125);
+   --bs-gradient: none;
 }

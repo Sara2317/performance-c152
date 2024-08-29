@@ -12,6 +12,78 @@ let factorLANMap
 let takeOff;
 let landing;
 
+let theme
+let color
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  function checkCookie() {
+    // let user = getCookie("username");
+    // if (user != "") {
+    //   alert("Welcome again " + user);
+    // } else {
+    //   user = prompt("Please enter your name:", "");
+    //   if (user != "" && user != null) {
+    //     setCookie("theme", theme, 365);
+    //   }
+    // }
+  }
+
+function changeTheme() {
+    btn = document.getElementById("btn") ?? ""
+    if (theme == "light") {
+        color = "#3333ff"
+        theme = "dark"
+        document.getElementById("theme-icon").setAttribute("class", "bi bi-brightness-high-fill")
+        // alert("l: "+theme)
+    } else {
+        // alert("d: "+theme)
+        color = "#1a8cff"
+        theme = "light"
+        document.getElementById("theme-icon").setAttribute("class", "bi bi-moon-stars-fill")
+    }
+    if(btn!=""){
+        btn.setAttribute("class", "btn btn-lg btn-out-"+theme)
+    }
+    document.body.setAttribute("data-bs-theme", theme);
+    document.getElementById("nav").style.backgroundColor = color
+}
+
+function setTheme(){
+    checkCookie()
+    // alert(theme)
+    theme = theme ?? "light"
+    document.getElementById("nav").style.backgroundColor = "#1a8cff"
+    document.body.setAttribute("data-bs-theme", theme);
+    if (theme == "light") {
+        document.getElementById("theme-icon").setAttribute("class", "bi bi-moon-stars-fill")
+    } else {
+        // alert("has: "+document.getElementsByTagName("html"))
+        document.getElementById("theme-icon").setAttribute("class", "bi bi-brightness-high-fill")
+        // alert(theme)
+    }
+}
+
 class Pair {
     key;
     val;
@@ -43,6 +115,8 @@ class Pair {
 }
 
 function init() {
+    setTheme()
+
     distanceMap()
     factorMap()
 
