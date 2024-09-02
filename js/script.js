@@ -52,7 +52,7 @@ function setCookie(cname, cvalue, exdays) {
 function changeTheme() {
     btn = document.getElementById("btn") ?? ""
     if (theme == "light") {
-        color = "#3333ff"
+        color = "#085bff"
         theme = "dark"
         document.getElementById("theme-icon").setAttribute("class", "bi bi-brightness-high-fill")
         // alert("l: "+theme)
@@ -73,7 +73,6 @@ function setTheme(){
     checkCookie()
     // alert(theme)
     theme = theme ?? "light"
-    document.getElementById("nav").style.backgroundColor = "#1a8cff"
     document.body.setAttribute("data-bs-theme", theme);
     if (theme == "light") {
         document.getElementById("theme-icon").setAttribute("class", "bi bi-moon-stars-fill")
