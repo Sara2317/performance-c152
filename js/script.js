@@ -124,6 +124,12 @@ function init() {
 
 }
 
+function switchMFt(isMeter, value) {
+if(isMeter){
+return value/0,3048}
+else { return value*0,3048}
+}
+
 function getDistance() {
     // alert("ciao")
     // d=calcDistance(0, 0, true, true, false)
@@ -323,6 +329,9 @@ function calcDistance(alt, temp, isPaved, isDry, isWindy, tk) {
         total = total + (0.25 * total);
     }
 
+
+gRoll = switchMFt(false, gRoll)
+total = switchMFt(false, total)
     result = new Pair(Math.trunc(gRoll), Math.trunc(total));
     // result = new Pair(Math.round(gRoll * 100) / 100.0, Math.round(total * 100) / 100.0);
     // distance = result;
