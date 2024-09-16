@@ -311,7 +311,7 @@
         </div>
 
         <div class="row " id="results"><!--display: none; -->
-            <div class="col-lg mx-5 text-center">
+            <div class="col-xl mx-5 text-center">
                 <table id="result0" class="table align-middle " style="display: none;"><!---style="display: none;"-->
                     <tr>
                         <td>
@@ -419,6 +419,8 @@
                                                     gRoll = document.getElementById("gRoll" + add + code)
                                                     tot = document.getElementById("tot" + add + code)
 
+                                                    gRoll.style.color = "#000000"
+                                                    tot.style.color = "#000000"
                                                     if (Number(gRoll.value) < max) {
                                                         gRoll.style.background = "#00ff00"
                                                         if (Number(tot.value) < max) {

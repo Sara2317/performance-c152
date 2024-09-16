@@ -18,26 +18,26 @@ let color
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires="+d.toUTCString();
+    let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-  
-  function getCookie(cname) {
+}
+
+function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
     return "";
-  }
-  
-  function checkCookie() {
+}
+
+function checkCookie() {
     // let user = getCookie("username");
     // if (user != "") {
     //   alert("Welcome again " + user);
@@ -47,7 +47,7 @@ function setCookie(cname, cvalue, exdays) {
     //     setCookie("theme", theme, 365);
     //   }
     // }
-  }
+}
 
 function changeTheme() {
     btn = document.getElementById("btn") ?? ""
@@ -62,14 +62,14 @@ function changeTheme() {
         theme = "light"
         document.getElementById("theme-icon").setAttribute("class", "bi bi-moon-stars-fill")
     }
-    if(btn!=""){
-        btn.setAttribute("class", "btn btn-lg btn-out-"+theme)
+    if (btn != "") {
+        btn.setAttribute("class", "btn btn-lg btn-out-" + theme)
     }
     document.body.setAttribute("data-bs-theme", theme);
     document.getElementById("nav").style.backgroundColor = color
 }
 
-function setTheme(){
+function setTheme() {
     checkCookie()
     // alert(theme)
     theme = theme ?? "light"
@@ -125,9 +125,10 @@ function init() {
 }
 
 function switchMFt(isMeter, value) {
-if(isMeter){
-return value/0,3048}
-else { return value*0,3048}
+    if (isMeter) {
+        return value / 0.3048
+    }
+    else { return value * 0.3048 }
 }
 
 function getDistance() {
@@ -225,12 +226,11 @@ function getDa(isa) {
 
 function calcDistance(alt, temp, isPaved, isDry, isWindy, tk) {
     result = new Pair;
-    keyDTable = new Pair(alt, temp) + "";
     // alert(keyDTable)
-
+    
     distanceTable = tk ? takeOff.getKey() : landing.getKey()
     runwayFactors = tk ? takeOff.getValue() : landing.getValue()
-
+    
     if (alt > maxAltitude || temp > maxTemperature) {
         throw "not valid values"
     }
@@ -239,6 +239,8 @@ function calcDistance(alt, temp, isPaved, isDry, isWindy, tk) {
     }
     let gRoll = 0;
     let total = 0;
+    keyDTable = new Pair(temp, alt) + "";
+    // alert(keyDTable )
     // alert(distanceTable.has(keyDTable))
     if (distanceTable.has(keyDTable)) {
         // alert("if")
@@ -273,7 +275,6 @@ function calcDistance(alt, temp, isPaved, isDry, isWindy, tk) {
             //                result = new Pai(gRoll, takeOf);
         } else {
             // alert("else1")
-
             if (temp % stepTemperature != 0) {
                 // alert("if2")
                 let step = temp % stepTemperature;
@@ -330,8 +331,8 @@ function calcDistance(alt, temp, isPaved, isDry, isWindy, tk) {
     }
 
 
-gRoll = switchMFt(false, gRoll)
-total = switchMFt(false, total)
+    gRoll = switchMFt(false, gRoll)
+    total = switchMFt(false, total)
     result = new Pair(Math.trunc(gRoll), Math.trunc(total));
     // result = new Pair(Math.round(gRoll * 100) / 100.0, Math.round(total * 100) / 100.0);
     // distance = result;
